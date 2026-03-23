@@ -1,0 +1,17 @@
+# Ignore the virtual environment (it's too big)
+venv/
+env/
+
+# Ignore local database (keep your test data private)
+db.sqlite3
+
+# Ignore temporary Python files
+__pycache__/
+*.pyc
+
+# Ignore secret environment variables
+.env
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
