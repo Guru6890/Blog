@@ -14,8 +14,18 @@
         </p>
 
     </article>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
 
-    <hr>
+    {% for comment in post.comment.all %}
+        <p><strong>{{comment.user}}:</strong> {{comment.content}}</p>
+    {% empty %}
+        <p>No comments yet. Be the first!</p>
+    {% endfor %}
+        <hr>
 
     <a href="{% url 'blog:home' %}" class="btn btn-secondary">← Back to Home</a>
 
