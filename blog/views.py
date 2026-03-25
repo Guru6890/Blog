@@ -6,7 +6,7 @@ from .models import Post
 
 class PostListView(generic.ListView):
     model = Post
-    template_name = 'post_list.html'
+    template_name = 'blog/post_list.html'
     context_object_name = 'posts'
     order_by = 'pub_date'
 
@@ -15,4 +15,4 @@ class PostListView(generic.ListView):
     
 class PostDetailView(generic.DetailView):
     model = Post
-    template_name = 'post_detail.html'
+    template_name = 'blog/post_detail.html'
