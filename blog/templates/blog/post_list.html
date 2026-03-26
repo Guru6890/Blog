@@ -1,32 +1,22 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="container my-5">
-    <h1 class="mb-4">Latest Posts</h1>
 
-    <div class="row g-4">
+<div class="container section">
+    <h1 class="mb-4">Blog</h1>
 
-        <!-- Post Card -->
-        {% for post in posts %}
-        <div class="col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+    {% for post in posts %}
+    <div class="mb-4">
+        <h3>{{ post.title }}</h3>
+        <p class="text-muted">{{ post.created_at }}</p>
 
-                <div class="card-body">
-                    <h5 class="card-title">{{post.title}}</h5>
-                    <p class="card-text">
-                        {{post.body|truncatechars:50}}
-                    </p>
-                    <a href="{% url 'blog:post' post.slug}" class="btn btn-primary">Read More</a>
-                </div>
+        <p>{{ post.content|truncatewords:30 }}</p>
 
-                <div class="card-footer text-muted">
-                    {{post.pub_date}}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        <!-- Duplicate above block for more posts -->
-
+        <a href="{% url 'post_detail' post.id %}" class="btn btn-outline-primary btn-sm">Read More</a>
     </div>
+    <hr>
+    {% endfor %}
+
 </div>
+
 {% endblock %}

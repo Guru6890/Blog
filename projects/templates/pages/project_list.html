@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container section">
+    <h1 class="mb-4">Projects</h1>
+
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ project.image.url }}" class="card-img-top">
+
+                <div class="card-body">
+                    <h4>{{ project.title }}</h4>
+                    <p>{{ project.description|truncatewords:25 }}</p>
+
+                    <p>
+                        <strong>Tech:</strong> {{ project.tech_stack }}
+                    </p>
+
+                    <a href="{{ project.github }}" class="btn btn-dark btn-sm">GitHub</a>
+                    <a href="{{ project.demo }}" class="btn btn-success btn-sm">Live</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
