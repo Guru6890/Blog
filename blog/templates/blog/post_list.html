@@ -12,7 +12,7 @@
 
         <p>{{ post.content|truncatewords:30 }}</p>
 
-        <a href="{% url 'post_detail' post.id %}" class="btn btn-outline-primary btn-sm">Read More</a>
+        <a href="{% url 'blog:post' slug %}" class="btn btn-outline-primary btn-sm">Read More</a>
     </div>
     <hr>
     {% endfor %}

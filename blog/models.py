@@ -10,8 +10,8 @@ from django.utils.text import slugify
 #        return super().get_queryset().filter(status=1)
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField()
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
     body = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -31,7 +31,7 @@ class Post(models.Model):
 
     def save(self, **kwargs):
         self.slug = slugify(self.title)
-        if((update_fields := kwargs.get(update_fields)) is not None and 'title' in update_fields):
+        if((update_fields := kwargs.get('update_fields')) is not None and 'title' in update_fields):
             kwargs[update_fields] = set(update_fields) | {'slug'}
 
         super().save(**kwargs)
